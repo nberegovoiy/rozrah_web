@@ -40,7 +40,7 @@ function setVote(type, element) {
         // метод отправки 
         type: "POST",
         // путь до скрипта-обработчика
-        url: "/functions/like_dislike.php",
+        url: "functions/like_dislike.php",
         // какие данные будут переданы
         data: {
             'id_news': id_news,

@@ -110,8 +110,6 @@ p {
 
 .article-block-wrapper {
     width: calc(75% - 15px);
-    ;
-    margin-left: 10px;
     min-height: 100px;
     display: flex;
     flex-direction: column;
@@ -477,4 +475,47 @@ nav .icon-burger .line {
 .like-dislike-button-block {
     display: flex;
     flex-direction: row;
+}
+
+.comments-block {
+    background-color: #fff;
+    display: flex;
+    flex-flow: column;
+    padding: 10px;
+}
+
+.comment {
+    background-color: #e7e8ea;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    margin-top: 10px;
+    justify-content: flex-start;
+}
+
+.comment-user-ava {
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.comment-text {
+    display: flex;
+    flex-flow: column;
+    margin-left: 10px;
+}
+
+.comment-row1 {
+    display: flex;
+    flex-flow: row;
+}
+
+.comment-row1 p {
+    margin-left: 5px;
+}
+
+.comment-row2 {
+    margin-top: 10px;
 }

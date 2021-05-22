@@ -79,13 +79,39 @@
                 <div class="comments-hide-show-block">
                     <div class="comments-hide-show-block-el1">
                         <i class="far fa-comment"></i>
-                        <p>28</p>
+                        <p><?php echo ($news["number_of_comments"]) ?></p>
                     </div>
                     <div class="comments-hide-show-block-el2">
                         КОМЕНТАРІ
                     </div>
                 </div>
+                <div class="comments-block">
 
+
+
+                    <div class="comment">
+                        <div class="comment-user-ava">
+                            <img class="img_small" src="images/user-male.png">
+                        </div>
+                        <div class="comment-text">
+                            <div class="comment-row1">
+                                <p>
+                                    Юзернейм
+                                </p>
+                                <p>
+                                    дата
+                                </p>
+                            </div>
+                            <div></div>
+                            <div class="comment-row2">
+                                <p>Сюди вставляй комєнт</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
             </div>
 
 
@@ -108,10 +134,10 @@
 
 
 
-<?php 
+    <?php
     require_once "blocks/footer.php";
-?>
-  
+    ?>
+
 </body>
 
 </html>
