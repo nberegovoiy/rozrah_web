@@ -15,7 +15,7 @@
 
 
     <div class="wrapper">
-        <div class="news-article-block">
+        <div class="news-article-block" data-id="<?php echo ($news["id"]) ?>">
             <div class="article-block-wrapper">
                 <div class="article-block">
                     <div class="article-header">
@@ -65,10 +65,10 @@
                     <div class="like-dislike-block-row">
                         <h3>Вам сподобалась ця стаття?</h3>
                         <div class="like-dislike-button-block">
-                            <div class="floating-button-green">
+                            <div class="floating-button-green" id="like">
                                 <i class="hover-test far fa-thumbs-up"></i> Так
                             </div>
-                            <div class="floating-button-red">
+                            <div class="floating-button-red" id="dislike">
                                 <i class="far fa-thumbs-down"></i> Ні
                             </div>
                         </div>
