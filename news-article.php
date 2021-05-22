@@ -24,7 +24,7 @@
                             <img class="img_small" src="images/img_small/<?php echo ($news["id"]) ?>.png">
                         </div>
                         <div class="article-info">
-                            <h3><?php echo ($news["title"]) ?></h3>
+                            <h2><?php echo ($news["title"]) ?></h2>
                             <div class="article-parameters">
                                 <div class="article-parameters-row1">
                                     <p>Категорія: <?php echo ($news["category"]) ?></p>
@@ -63,7 +63,7 @@
 
                 <div class="like-dislike-block">
                     <div class="like-dislike-block-row">
-                        <h4>Вам сподобалась ця стаття?</h4>
+                        <h3>Вам сподобалась ця стаття?</h3>
                         <div class="like-dislike-button-block">
                             <div class="floating-button-green">
                                 <i class="hover-test far fa-thumbs-up"></i> Так
@@ -75,7 +75,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="comments-hide-show-block">
                     <div class="comments-hide-show-block-el1">
                         <i class="far fa-comment"></i>

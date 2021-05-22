@@ -39,9 +39,9 @@
                                 <p>Автор: <?php echo ($news[$i]["author"]) ?></p>
                                 <p><?php echo ($news[$i]["date"]) ?></p>
                             </div>
-                            <div>
-                                <h4><?php echo ($news[$i]["title"]) ?></h4>
-                            </div>
+                           
+                                <h2><?php echo ($news[$i]["title"]) ?></h2>
+                          
 
                             <div class="item-text-img">
                                 <div class="text-block">
