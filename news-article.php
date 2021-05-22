@@ -108,8 +108,10 @@
 
 
 
-
-
+<?php 
+    require_once "blocks/footer.php";
+?>
+  
 </body>
 
 </html>
