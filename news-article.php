@@ -3,9 +3,15 @@
 <head>
     <?php
     require_once "functions/functions.php";
+
+
     $news = getNewsItems(1, $_GET["id"]);
+    $comments = getComments($_GET["id"]);
+    $count_comments = count($comments);
     $title = $news["title"];
     require_once "blocks/head.php";
+
+
     ?>
 
 </head>
@@ -77,38 +83,55 @@
 
 
                 <div class="comments-hide-show-block">
-                    <div class="comments-hide-show-block-el1">
-                        <i class="far fa-comment"></i>
-                        <p><?php echo ($news["number_of_comments"]) ?></p>
-                    </div>
-                    <div class="comments-hide-show-block-el2">
-                        КОМЕНТАРІ
+                    <div class="comments-hide-show-block-row">
+                        <div class="comments-hide-show-block-el1">
+                            <i class="far fa-comment"></i>
+                            <p>1</p>
+                        </div>
+                        <div class="comments-hide-show-block-el2">
+                            КОМЕНТАРІ
+                        </div>
                     </div>
                 </div>
+
+                <div class="create-comment-block">
+                    <div class="comment-user-ava">
+                        <img class="img_small" src="images/user-male.png">
+                    </div>
+                    <div class="inputs-block">
+                        <input placeholder="Введіть нікнейм">
+                        <textarea placeholder="Введіть коментар" name="Text1" cols="40" rows="5"></textarea>
+                        <button class="button7">Відправити</button>
+                    </div>
+                </div>
+
                 <div class="comments-block">
 
 
-
-                    <div class="comment">
-                        <div class="comment-user-ava">
-                            <img class="img_small" src="images/user-male.png">
-                        </div>
-                        <div class="comment-text">
-                            <div class="comment-row1">
-                                <p>
-                                    Юзернейм
-                                </p>
-                                <p>
-                                    дата
-                                </p>
+                    <?php
+                    for ($i = 0; $i < count($comments); $i++) :
+                    ?>
+                        <div class="comment">
+                            <div class="comment-user-ava">
+                                <img class="img_small" src="images/user-male.png">
                             </div>
-                            <div></div>
-                            <div class="comment-row2">
-                                <p>Сюди вставляй комєнт</p>
+                            <div class="comment-text">
+                                <div class="comment-row1">
+                                    <strong class="comment-row1-username">
+                                        <?php echo ($comments[$i]["username"]) ?>
+                                    </strong>
+                                    <p>
+                                        <?php echo ($comments[$i]["comment_date"]) ?>
+                                    </p>
+                                </div>
+                                <div></div>
+                                <div class="comment-row2">
+                                    <p><?php echo ($comments[$i]["comment_text"]) ?></p>
+                                </div>
                             </div>
-                        </div>
 
-                    </div>
+                        </div>
+                    <?php endfor; ?>
 
 
                 </div>
