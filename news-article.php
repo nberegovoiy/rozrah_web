@@ -4,8 +4,10 @@
     <?php
     require_once "functions/functions.php";
 
+    setViewPlusOne($_GET["id"]);
 
     $news = getNewsItems(1, $_GET["id"]);
+    $sidebar_news = getNewsItems(7, false);
     $comments = getComments($_GET["id"]);
     $count_comments = count($comments);
     $title = $news["title"];
@@ -44,11 +46,11 @@
                                             </div>
                                             <div class="like-dislike-comment">
                                                 <i class="hover-test far fa-thumbs-up"></i>
-                                                <p><?php echo ($news["number_of_likes"]) ?></p>
+                                                <p id="number_of_likes"><?php echo ($news["number_of_likes"]) ?></p>
                                             </div>
                                             <div class="like-dislike-comment">
                                                 <i class="far fa-thumbs-down"></i>
-                                                <p><?php echo ($news["number_of_dislikes"]) ?></p>
+                                                <p id="number_of_dislikes"><?php echo ($news["number_of_dislikes"]) ?></p>
                                             </div>
                                             <div class="like-dislike-comment">
                                                 <i class="far fa-comment"></i>
@@ -86,7 +88,7 @@
                     <div class="comments-hide-show-block-row">
                         <div class="comments-hide-show-block-el1">
                             <i class="far fa-comment"></i>
-                            <p>1</p>
+                            <p><?php echo ($news["number_of_comments"]) ?></p>
                         </div>
                         <div class="comments-hide-show-block-el2">
                             КОМЕНТАРІ
@@ -99,9 +101,9 @@
                         <img class="img_small" src="images/user-male.png">
                     </div>
                     <div class="inputs-block">
-                        <input placeholder="Введіть нікнейм">
-                        <textarea placeholder="Введіть коментар" name="Text1" cols="40" rows="5"></textarea>
-                        <button class="button7">Відправити</button>
+                        <input id="username" placeholder="Введіть нікнейм">
+                        <textarea id="user_comment" placeholder="Введіть коментар" cols="40" rows="5"></textarea>
+                        <button id="create_comment" class="button7">Відправити</button>
                     </div>
                 </div>
 
@@ -140,7 +142,36 @@
 
 
             <div class="sidebar-block">
-                news-sidebar-block
+                <h2>Читайте також:</h2>
+
+
+                <?php
+                for ($i = 0; $i < count($sidebar_news); $i++) :
+                ?>
+                <div class="sidebar-block-el">
+                    <div><hr></div>
+                    <h3><?php echo ($sidebar_news[$i]["title"]) ?></h3>
+                    <div class="sidebar-block-el-param ">
+                        <div class="like-dislike-comment">
+                            <i class="far fa-eye"></i>
+                            <p><?php echo ($sidebar_news[$i]["number_of_views"]) ?></p>
+                        </div>
+                        <div class="like-dislike-comment">
+                            <i class="hover-test far fa-thumbs-up"></i>
+                            <p id="number_of_likes"><?php echo ($sidebar_news[$i]["number_of_likes"]) ?></p>
+                        </div>
+                        <div class="like-dislike-comment">
+                            <i class="far fa-thumbs-down"></i>
+                            <p id="number_of_dislikes"><?php echo ($sidebar_news[$i]["number_of_dislikes"]) ?></p>
+                        </div>
+                        <div class="like-dislike-comment">
+                            <i class="far fa-comment"></i>
+                            <p><?php echo ($sidebar_news[$i]["number_of_comments"]) ?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php endfor; ?>
+
             </div>
         </div>
 

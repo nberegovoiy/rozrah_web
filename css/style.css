@@ -5,7 +5,10 @@ body {
     background-color: #e7e8ea;
 }
 
-h2 {
+h2,
+h3,
+h4,
+h5 {
     padding: 0px;
     margin: 0;
 }
@@ -113,6 +116,7 @@ p {
     flex-direction: row;
     margin-bottom: 10px;
     justify-content: center;
+    align-items: flex-start;
 }
 
 .article-block {
@@ -132,7 +136,37 @@ p {
     border-radius: 5px;
     width: calc(25% - 20px);
     margin-left: 10px;
-    min-height: 100px;
+    padding: 10px;
+    display: flex;
+    flex-flow: column;
+}
+
+.sidebar-block-el {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-block-el-param {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.sidebar-block-el-param>.like-dislike-comment {
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-right: 5px;
+    font-size: 13px;
+    color: #b5bbc8;
+}
+
+hr {
+    border: none;
+    background-color: #b5bbc8;
+    color: #b5bbc8;
+    height: 1px;
 }
 
 .article-header {
@@ -591,4 +625,8 @@ textarea {
 .button7:active {
     background: rgb(33, 147, 90);
     box-shadow: 0 3px rgb(33, 147, 90) inset;
+}
+
+.hide {
+    display: none;
 }

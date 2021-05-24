@@ -8,7 +8,19 @@ $password = 'root';
 
  
 
+function setViewPlusOne($id){
+    global  $host;
+    global $database ;
+    global $user;
+    global $password ;
+    global $link ;
 
+    $query ="UPDATE news SET `number_of_views`= `number_of_views` + 1 WHERE  `id` = $id";
+    $link = mysqli_connect($host, $user, $password, $database);
+
+    $result = mysqli_query($link, $query); 
+    mysqli_close($link);
+}
 
 
 function getNewsItems($limit, $id) {
@@ -24,7 +36,7 @@ function getNewsItems($limit, $id) {
     }
 
 
-    $query ="SELECT * FROM news WHERE type='news' $where ORDER BY 'id' DESC LIMIT $limit";
+    $query ="SELECT * FROM news WHERE type='news' $where ORDER BY id DESC LIMIT $limit";
     $link = mysqli_connect($host, $user, $password, $database);
 
     $result = mysqli_query($link, $query); 
@@ -44,7 +56,8 @@ function getComments($id_post){
     global $user; 
     global $password;
 
-    $query = "SELECT * FROM comments WHERE id_post = $id_post ORDER BY id_comment DESC";
+    $query = "SELECT * FROM user_comments WHERE id_post = $id_post ORDER BY id_comment DESC";
+    
     $link = mysqli_connect($host, $user, $password, $database);
     
     $result = mysqli_query($link, $query); 

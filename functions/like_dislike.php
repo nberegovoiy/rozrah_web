@@ -6,9 +6,6 @@ $user = 'root';
 $password = 'root'; 
 
 
-//UPDATE `test_db`.`news` SET `$fieldName`= `$fieldName` + 1 WHERE  `id` = $newsId
-//SELECT * FROM news WHERE type='news' $where ORDER BY 'id' DESC LIMIT $limit
-
 
 $newsId = (int) $_POST['id_news'];
 $type = $_POST['type'];

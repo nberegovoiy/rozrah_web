@@ -1,16 +1,18 @@
 $(document).ready(function() {
     $('#like').click(function() {
-        setVote('like', $(this));
+        setVote('like');
     });
 
     $('#dislike').click(function() {
-        setVote('dislike', $(this));
+        setVote('dislike');
     });
-
+    $('#create_comment').click(function() {
+        newComment();
+    });
 });
 
-function setVote(type, element) {
-    var id_news = 1;
+function setVote(type) {
+    var id_news = $('.news-article-block').attr('data-id');
 
 
     $.ajax({
@@ -24,43 +26,57 @@ function setVote(type, element) {
             'type': type
         },
 
-        dataType: "json",
+        dataType: "json"
 
     });
+
+    if (type == 'like') {
+        document.querySelector("#number_of_likes").innerHTML = +document.querySelector("#number_of_likes").innerHTML + 1;
+    } else {
+        document.querySelector("#number_of_dislikes").innerHTML = +document.querySelector("#number_of_dislikes").innerHTML + 1;
+    }
+
+    document.querySelector('.like-dislike-button-block').classList.add("hide");
+
+    document.querySelector('.like-dislike-block-row>h3').innerHTML = "Дякую за Вашу оцінку!";
+
+
 }
 
 
-// type - тип голоса. Лайк или дизлайк
-// element - кнопка, по которой кликнули
-function setVote(type, element) {
-    // получение данных из полей
-    var id_news = 1;
+function newComment() {
+    var id_news = $('.news-article-block').attr('data-id');
 
-    $.ajax({
-        // метод отправки 
-        type: "POST",
-        // путь до скрипта-обработчика
-        url: "functions/like_dislike.php",
-        // какие данные будут переданы
-        data: {
-            'id_news': id_news,
-            'type': type
-        },
-        // тип передачи данных
-        dataType: "json",
-        // действие, при ответе с сервера
-        success: function(data) {
-            // в случае, когда пришло success. Отработало без ошибок
-            if (data.result == 'success') {
-                // Выводим сообщение
-                alert('Голос засчитан');
-                // увеличим визуальный счетчик
-                var count = parseInt(element.find('b').html());
-                element.find('b').html(count + 1);
-            } else {
-                // вывод сообщения об ошибке
-                alert(data.msg);
-            }
-        }
-    });
+    var username = $('#username').val();
+    var user_comment = $('#user_comment').val();
+
+    console.log(username);
+    console.log(user_comment);
+
+    var date = new Date();
+    var comment_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+
+
+    if (username != "" && user_comment != "") {
+        $.ajax({
+
+            type: "POST",
+
+            url: "functions/comments.php",
+
+            data: {
+                'id_news': id_news,
+                'username': username,
+                'comment_text': user_comment,
+                'comment_date': comment_date
+            },
+
+            dataType: "json"
+
+        });
+        location.reload();
+    } else {
+        alert("Будь ласка, введіть усі необхідні дані!");
+    }
+
 }
