@@ -14,34 +14,29 @@
 </head>
 
 <body>
-
     <?php require_once "blocks/header.php" ?>
 
 
-    <section>
+    <div class="main-wrapper">
         <div class="wrapper">
-            <h1>Новини:</h1>
+            <h1 id="result_news">Новини:</h1>
         </div>
         <div class="wrapper">
-
-
-
-
 
             <div class="block-news">
 
                 <?php
                 for ($i = 0; $i < count($news); $i++) :
                 ?>
-                    <div class="item" data-sort-date="08.05.2021" data-sort-like="2" data-sort-dislike="" data-sort-date="">
+                    <div class="item" data-title="<?php echo ($news[$i]["title"]) ?>">
                         <a href="news-article.php?id=<?php echo ($news[$i]["id"]) ?>">
                             <div class="top-news-title">
                                 <p>Автор: <?php echo ($news[$i]["author"]) ?></p>
                                 <p><?php echo ($news[$i]["date"]) ?></p>
                             </div>
-                           
-                                <h2><?php echo ($news[$i]["title"]) ?></h2>
-                          
+
+                            <h2 class="link-color"><?php echo ($news[$i]["title"]) ?></h2>
+
 
                             <div class="item-text-img">
                                 <div class="text-block">
@@ -70,8 +65,8 @@
                                         <p><?php echo ($news[$i]["number_of_comments"]) ?></p>
                                     </div>
                                 </div>
-                                <div>
-                                    <p>Категорія: <?php echo ($news[$i]["category"]) ?></p>
+                                <div class="category-block">
+                                    <p>#<?php echo ($news[$i]["category"]) ?></p>
                                 </div>
                             </div>
                         </a>
@@ -79,24 +74,15 @@
                 <?php endfor; ?>
 
 
-
-
-
-
-
-
             </div>
         </div>
-    </section>
+    </div>
 
-
-
-
-
-    <?php 
+    <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+    <?php
     require_once "blocks/footer.php";
-?>
-  
+    ?>
+
 </body>
 
 </html>

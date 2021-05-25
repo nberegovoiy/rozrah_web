@@ -9,6 +9,9 @@ $(document).ready(function() {
     $('#create_comment').click(function() {
         newComment();
     });
+    $('.search_button').click(function() {
+        searchNews();
+    });
 });
 
 function setVote(type) {
@@ -80,3 +83,57 @@ function newComment() {
     }
 
 }
+
+function searchNews() {
+    var news = document.querySelectorAll(".item");
+
+    var search_query = $('#search_input').val().toUpperCase();
+    var count = 0;
+
+    for (var i = 0; i < news.length; i++) {
+        if (!news[i].getAttribute('data-title').toUpperCase().includes(search_query)) {
+            news[i].classList.add("hide");
+
+        } else {
+            count++;
+        }
+    }
+
+    var word;
+    if (count == 1) {
+        word = "запис";
+    } else if (count >= 2 && count <= 5) {
+        word = "записи";
+    } else {
+        word = "записів";
+    }
+
+    if (count == 0) {
+        document.querySelector('.fotter').classList.add("position-absolute");
+    }
+
+    document.getElementById('result_news').innerHTML = "Результати пошуку (" + count + " " + word + ")";
+}
+
+function hideSearchBlock() {
+    document.querySelector('.search-form').classList.add("hide");
+}
+
+function backToTop() {
+    var button = $('.back-to-top');
+
+    $(window).on('scroll', () => {
+        if ($(this).scrollTop() >= 50) {
+            button.fadeIn();
+        } else {
+            button.fadeOut();
+        }
+    });
+
+    button.on('click', (e) => {
+        e.preventDefault();
+        $('html').animate({ scrollTop: 0 }, 1000)
+    });
+}
+
+backToTop();
