@@ -7,7 +7,14 @@ body {
 }
 
 .article-img {
-    width: 50%;
+    width: 60%;
+    display: block;
+    margin: 10px auto;
+}
+
+.article-vid {
+    width: 80%;
+    min-height: 400px;
     display: block;
     margin: 10px auto;
 }
