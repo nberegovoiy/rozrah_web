@@ -28,7 +28,7 @@
                 <?php
                 for ($i = 0; $i < count($news); $i++) :
                 ?>
-                    <div class="item" data-title="<?php echo ($news[$i]["title"]) ?>">
+                    <div class="item" data-title="<?php echo ($news[$i]["title"]) ?>" data-author="<?php echo ($news[$i]["author"]) ?>" data-short_text="<?php echo ($news[$i]["short_text"]) ?>" data-category="<?php echo ($news[$i]["category"]) ?>">
                         <a href="news-article.php?id=<?php echo ($news[$i]["id"]) ?>">
                             <div class="top-news-title">
                                 <p>Автор: <?php echo ($news[$i]["author"]) ?></p>

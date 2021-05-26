@@ -87,11 +87,18 @@ function newComment() {
 function searchNews() {
     var news = document.querySelectorAll(".item");
 
+    for (var i = 0; i < news.length; i++) {
+        news[i].classList.remove("hide");
+    }
+
     var search_query = $('#search_input').val().toUpperCase();
     var count = 0;
 
     for (var i = 0; i < news.length; i++) {
-        if (!news[i].getAttribute('data-title').toUpperCase().includes(search_query)) {
+        if (!news[i].getAttribute('data-title').toUpperCase().includes(search_query) &&
+            !news[i].getAttribute('data-author').toUpperCase().includes(search_query) &&
+            !news[i].getAttribute('data-short_text').toUpperCase().includes(search_query) &&
+            !news[i].getAttribute('data-category').toUpperCase().includes(search_query)) {
             news[i].classList.add("hide");
 
         } else {
