@@ -24,8 +24,8 @@
                 </div>
             </div>
         </li>
-        <li><a href="index.php">Новини</a></li>
-        <li><a href="crypto.php">Криптовалюта</a></li>
+        <li><a href="index.php"><i class="far fa-newspaper"></i>Новини</a></li>
+        <li><a href="crypto.php"><i class="fab fa-bitcoin"></i>Криптовалюти</a></li>
 
     </ul>
     <label for="nav-toggle" class="icon-burger">
