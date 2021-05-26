@@ -28,7 +28,7 @@
                     <div class="article-block">
                         <div class="article-header">
 
-                            <div class="article-img">
+                            <div class="">
                                 <img class="img_small" src="images/img_small/<?php echo ($news["id"]) ?>.png">
                             </div>
                             <div class="article-info">
