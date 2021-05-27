@@ -12,6 +12,12 @@ $(document).ready(function() {
     $('.search_button').click(function() {
         searchNews();
     });
+
+    $("#search_input").keyup(function(e) {
+        if (e.keyCode == 13) {
+            searchNews();
+        }
+    });
 });
 
 function setVote(type) {
@@ -87,39 +93,53 @@ function newComment() {
 function searchNews() {
     var news = document.querySelectorAll(".item");
 
-    for (var i = 0; i < news.length; i++) {
-        news[i].classList.remove("hide");
-    }
+
 
     var search_query = $('#search_input').val().toUpperCase();
     var count = 0;
 
-    for (var i = 0; i < news.length; i++) {
-        if (!news[i].getAttribute('data-title').toUpperCase().includes(search_query) &&
-            !news[i].getAttribute('data-author').toUpperCase().includes(search_query) &&
-            !news[i].getAttribute('data-short_text').toUpperCase().includes(search_query) &&
-            !news[i].getAttribute('data-category').toUpperCase().includes(search_query)) {
-            news[i].classList.add("hide");
 
-        } else {
-            count++;
-        }
-    }
 
-    var word;
-    if (count == 1) {
-        word = "запис";
-    } else if (count >= 2 && count <= 5) {
-        word = "записи";
+    search_query.trim();
+    if (is_empty(search_query)) {
+        alert("Ви нічого не ввели!");
     } else {
-        word = "записів";
+        for (var i = 0; i < news.length; i++) {
+            news[i].classList.remove("hide");
+        }
+        for (var i = 0; i < news.length; i++) {
+            if (!news[i].getAttribute('data-title').toUpperCase().includes(search_query) &&
+                !news[i].getAttribute('data-author').toUpperCase().includes(search_query) &&
+                !news[i].getAttribute('data-short_text').toUpperCase().includes(search_query) &&
+                !news[i].getAttribute('data-category').toUpperCase().includes(search_query)) {
+                news[i].classList.add("hide");
+
+            } else {
+                count++;
+            }
+        }
+
+        var word;
+        if (count == 1) {
+            word = "запис";
+        } else if (count >= 2 && count <= 5) {
+            word = "записи";
+        } else {
+            word = "записів";
+        }
+
+        if (count == 0) {
+            document.querySelector('.fotter').classList.add("position-absolute");
+        }
+
+        document.getElementById('result_news').innerHTML = "Результати пошуку (" + count + " " + word + ")";
     }
 
-    if (count == 0) {
-        document.querySelector('.fotter').classList.add("position-absolute");
-    }
 
-    document.getElementById('result_news').innerHTML = "Результати пошуку (" + count + " " + word + ")";
+
+
+
+
 }
 
 function hideSearchBlock() {
@@ -144,3 +164,18 @@ function backToTop() {
 }
 
 backToTop();
+
+
+function is_empty(x) {
+    return (
+        (typeof x == 'undefined') ||
+        (x == null) ||
+        (x == false) //same as: !x
+        ||
+        (x.length == 0) ||
+        (x == "") ||
+        (x.replace(/\s/g, "") == "") ||
+        (!/[^\s]/.test(x)) ||
+        (/^\s*$/.test(x))
+    );
+}
